@@ -10,9 +10,7 @@ import AddNote from '../AddNote/AddNote'
 import ApiContext from '../ApiContext'
 import config from '../config'
 import './App.css'
-// import Currency from './Currency'
-// import CurrencyError from './CurrencyError'
-
+import ErrorBoundary from '../ErrorBoundary/ErrorBoundary'
 
 class App extends Component {
   state = {
@@ -132,10 +130,7 @@ class App extends Component {
     }
     return (
       <ApiContext.Provider value={value}> 
-        {/* <CurrencyError>
-          Germany: <Currency value={21} locale="de-DE" currency="US"/>
-          USA: <Currency value={21} locale="en-US" currency="USD"/>
-        </CurrencyError> */}
+        <ErrorBoundary>
         <div className='App'>
           <nav className='App__nav'>
             {this.renderNavRoutes()}
@@ -151,6 +146,7 @@ class App extends Component {
             {this.renderMainRoutes()}
           </main>
         </div>
+        </ErrorBoundary>
       </ApiContext.Provider>
     )
   }
